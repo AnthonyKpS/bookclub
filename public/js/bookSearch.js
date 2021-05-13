@@ -24,18 +24,20 @@ async function bookSearchHandler(e) {
     }).toString()
 
     // Make the request
-    try {
-        fetch(url + searchParams)
-            .then(response => response.json())
-            .then(data => {
+    fetch(url + searchParams)
+        .then(response => response.json())
+        .then(data => {
 
-                // Update the books' table
-                updateBooksTable(table, tableTitle, tableBody, data.books)
-            })
+            // Reset the books' table body
+            resetBooksTableBody(tableBody) 
 
-        // Reset the form
-        form.reset()
-    } catch (error) {
-        showToastNotification(false, error.message)
-    }
+            // Update the books' table
+            updateBooksTable(table, tableTitle, tableBody, data.books)
+
+            // Reset the form
+            form.reset()
+        })
+        .catch(error => {
+            showToastNotification(false, error.message)
+        })
 }

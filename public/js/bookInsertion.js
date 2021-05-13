@@ -22,12 +22,9 @@ function postFormDataAsJson({ url, formData }) {
         };
 
         // Make the request
-        try {
-            fetch(url, requestOptions)
-            .then( response => resolve(response.json())) // returns the response as json 
-        } catch (error) {
-            reject(error) // or the error
-        }
+        fetch(url, requestOptions)
+            .then(response => resolve(response.json())) // returns the response as json 
+            .catch(error => reject(error))
     })
 }
 
@@ -44,7 +41,7 @@ async function bookInsertionHandler(e) {
 
     // Construct a FormData obj from the grabbed form
     const formData = new FormData(form)
- 
+
     // Post the form data
     try {
         const response = await postFormDataAsJson({ url, formData })

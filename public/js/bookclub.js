@@ -13,7 +13,7 @@ function updateBooksTable(table, tableTitle, tableBody, books) {
         // Populate the table's body
         books.forEach(book => {
 
-            let row = table.insertRow()
+            let row = tableBody.insertRow()
 
             // id
             let id = row.insertCell(0)
@@ -50,8 +50,8 @@ function updateBooksTable(table, tableTitle, tableBody, books) {
     }
 }
 
-function resetBooksTableBody(table) {
-    table.innerHTML = ""
+function resetBooksTableBody(tableBody) {
+    tableBody.innerHTML = ""
 }
 
 function showToastNotification(success, message) {
@@ -70,7 +70,7 @@ function showToastNotification(success, message) {
     const toast = document.getElementById("liveToast")
     const toastHeader = document.getElementById("toast-header")
     const toastBody = document.getElementById("toast-body")
-    
+
     // Update the toast's header according to the success variable
     if (success) {
         if (toastHeader.classList.contains("bg-danger")) {

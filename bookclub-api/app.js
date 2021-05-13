@@ -1,13 +1,13 @@
 // Express
-const cors = require('cors')
 const express = require('express')
 const app = express()
-const port = 3000
+
+// Cors
+const cors = require('cors')
 app.use(cors())
 
-
-// SQLITE3 Database
-const db = require('./db/dbconn.js')
+// Sqlite3 Database
+const db = require('./db/db.js')
 let tableName = "books"
 let tableCreationQuery = `
     CREATE TABLE ${tableName} (
@@ -17,7 +17,6 @@ let tableCreationQuery = `
         genre TEXT NOT NULL,
         price FLOAT NOT NULL
     );`
-
 db.run(tableCreationQuery, (err) => {
     if (err) {
         return console.error(err.message);
@@ -31,7 +30,7 @@ const jsonParser = express.json()
 // Jsonschema validator
 const Validator = require('jsonschema').Validator
 const v = new Validator()
-const bookInsertionRequestSchema = require('./models/bookInsertionRequest.json')
+const bookInsertionRequestSchema = require('./models/BookInsertionRequest.json')
 
 // Routes
 app.get('/', (req, res) => { indexController() })
@@ -42,7 +41,7 @@ app.get('/books', (req, res) => { booksGetController(req, res) })
 
 // Controllers
 const indexController = () => {
-    res.send(`Bookclub is listening at http://localhost:${port} `)
+    res.send(`Bookclub is listening at http://localhost:${port}`)
 }
 
 const booksPostController = async (req, res) => {
@@ -52,7 +51,7 @@ const booksPostController = async (req, res) => {
     if (!validity) {
         res.json({
             book_insertion: false,
-            message: "Post request for book insertion not valid."
+            message: "The request's body does not correspond to the correct request body for a book insertion."
         })
     }
 
@@ -69,7 +68,7 @@ const booksPostController = async (req, res) => {
     if (insertion) {
         res.json({
             book_insertion: true,
-            message: "Insertion successfull."
+            message: "You added a book."
         })
     } else {
         res.json({
@@ -156,6 +155,7 @@ function returnAllBooks() {
 }
 
 // Start the server
+const port = 3000
 app.listen(port, () => {
     console.log(`Bookclub is listening at http://localhost:${port}`)
 })
