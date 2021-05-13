@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
+
+    <!-- Bootstrap icons-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <title>Welcome to Bookclub 👋</title>
+
+    <style>
+        .wave {
+            animation-name: wave-animation;
+            /* Refers to the name of your @keyframes element below */
+            animation-duration: 2.5s;
+            /* Change to speed up or slow down */
+            animation-iteration-count: infinite;
+            /* Never stop waving :) */
+            transform-origin: 70% 70%;
+            /* Pivot around the bottom-left palm */
+            display: inline-block;
+        }
+
+        @keyframes wave-animation {
+            0% {
+                transform: rotate(0.0deg)
+            }
+
+            10% {
+                transform: rotate(14.0deg)
+            }
+
+            /* The following five values can be played with to make the waving more or less extreme */
+            20% {
+                transform: rotate(-8.0deg)
+            }
+
+            30% {
+                transform: rotate(14.0deg)
+            }
+
+            40% {
+                transform: rotate(-4.0deg)
+            }
+
+            50% {
+                transform: rotate(10.0deg)
+            }
+
+            60% {
+                transform: rotate(0.0deg)
+            }
+
+            /* Reset for the last half to pause */
+            100% {
+                transform: rotate(0.0deg)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col d-flex align-items-center justify-content-center ju min-vh-100">
+                <div class="wrapper">
+                    <h1 class="display-2"> <strong>Bookclub says hi <span class="wave">👋</span></strong></h1>
+                    <div class="card text-center mt-4">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab"
+                                        data-bs-target="#home" type="button" role="tab" aria-controls="home"
+                                        aria-selected="true"><i class="bi bi-plus"></i>Add a book</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab"
+                                        data-bs-target="#profile" type="button" role="tab" aria-controls="profile"
+                                        aria-selected="false"><i class="bi bi-search"></i> Search for a book</button>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="contact-tab" data-bs-toggle="tab"
+                                        data-bs-target="#contact" type="button" role="tab" aria-controls="contact"
+                                        aria-selected="false"><i class="bi bi-book"></i> Show me all the books</button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-body tab-content" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <h5 class="card-title"></i>Add a book</h5>
+                                <p class="card-text">Fill in the <strong>author</strong> and <strong>title</strong>
+                                    fields,
+                                    pick a <strong>genre</strong> and declare a <strong>price</strong> below.
+                                </p>
+                                <form id="bookAdd">
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" name="author" class="form-control"
+                                                    id="floatingAuthor" placeholder="Charls Dickens" required>
+                                                <label for="floatingAuthor">Author</label>
+                                            </div>
+                                            <div class="form-floating">
+                                                <select name="genre" class="form-select" id="floatingGenre"
+                                                    aria-label="Choose a genre" required>
+                                                    <option selected disabled>Choose...</option>
+                                                    <option value="Science fiction">Science fiction</option>
+                                                    <option value="Satire">Satire</option>
+                                                    <option value="Drama">Drama</option>
+                                                    <option value="Action and Adventure">Action and Adventure</option>
+                                                    <option value="Romance">Romance</option>
+                                                    <option value="Mystery">Mystery</option>
+                                                    <option value="Horror">Horror</option>
+                                                </select>
+                                                <label for="floatingGenre">Genre</label>
+                                            </div>
+                                        </div>
+                                        <div class="col">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" name="title" class="form-control" id="floatingTitle"
+                                                    placeholder="Charls Dickens" required>
+                                                <label for="floatingTitle">Title</label>
+                                            </div>
+                                            <div class="form-floating">
+                                                <input type="number" min="0" name="price" class="form-control"
+                                                    id="floatingPrice" placeholder="10.0" required>
+                                                <label for="floatingPrice">Price</label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Add this book</button>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <h5 class="card-title"></i>Search for a book</h5>
+                                <p class="card-text">Type your <strong>keyword</strong> below.</p>
+                                <form id="bookSearch">
+                                    <div class="row g-2">
+                                        <div class="col">
+                                            <div class="form-floating mb-2">
+                                                <input type="text" name="keyword" class="form-control"
+                                                    id="floatingSearch" placeholder="Charls" required>
+                                                <label for="floatingSearch">Keyword</label>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Search</button>
+                                    </div>
+                                </form>
+                                <h5 class="mt-4" id="book-search-results-table-title"></h5>
+                                <table class="table d-none" id="book-search-results-table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">id</th>
+                                            <th scope="col">Author</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Genre</th>
+                                            <th scope="col">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="book-search-results-table-body"></tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                <h5 class="card-title"></i>Show me all the books</h5>
+                                <p class="card-text">Here's a list of <strong>all the books</strong> in the bookclub.</p>
+                                <table class="table d-none" id="show-all-books-table">
+                                    <h5 class="mt-4" id="show-all-books-table-title"></h5>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">id</th>
+                                            <th scope="col">Author</th>
+                                            <th scope="col">Title</th>
+                                            <th scope="col">Genre</th>
+                                            <th scope="col">Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="show-all-books-table-body"></tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Toast-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 5">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto"><i class="bi bi-bell-fill"></i> Bookclub says...</strong>
+                <small>Now</small>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toastBody">
+
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
+        crossorigin="anonymous"></script>
+
+    <!-- Bookclub's JS-->
+    <script src="./js/bookclub.js"></script>
+</body>
+
+</html>
