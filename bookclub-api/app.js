@@ -1,7 +1,10 @@
 // Express
+const cors = require('cors')
 const express = require('express')
 const app = express()
 const port = 3000
+app.use(cors())
+
 
 // SQLITE3 Database
 const db = require('./db/dbconn.js')
@@ -55,10 +58,10 @@ const booksPostController = async (req, res) => {
 
     // Create a "local" book obj
     let newBook = {
-        author: req.body.data.attributes.author,
-        title: req.body.data.attributes.title,
-        genre: req.body.data.attributes.genre,
-        price: req.body.data.attributes.price
+        author: req.body.author,
+        title: req.body.title,
+        genre: req.body.genre,
+        price: req.body.price
     }
 
     // Insert the new book into the Database

@@ -1,123 +1,67 @@
 {
-    "$title": "bookPost",
-    "description": "Schema of a book post json request.",
+    "description": "The schema of the book insertion request.",
     "examples": [
         {
-            "data": {
-                "type": "book",
-                "attributes": {
-                    "author": "Sigrais",
-                    "title": "Histoire des rats, pour servir à l'histoire universelle",
-                    "genre": "Mystery",
-                    "price": 10
-                }
-            }
+            "author": "Sigrais",
+            "title": "Histoire des rats, pour servir à l'histoire universelle",
+            "genre": "Mystery",
+            "price": 10
         }
     ],
     "required": [
-        "data"
+        "author",
+        "title",
+        "genre",
+        "price"
     ],
-    "title": "The root schema",
+    "title": "Book insertion request schema.",
     "type": "object",
     "properties": {
-        "data": {
+        "author": {
+            "description": "The book's author",
+            "examples": [
+                "Sigrais"
+            ],
+            "title": "author",
+            "minItems": 1,
+            "type": "string"
+        },
+        "title": {
+            "description": "The book's title.",
+            "examples": [
+                "Histoire des rats, pour servir à l'histoire universelle"
+            ],
+            "title": "title",
+            "minItems": 1,
+            "type": "string"
+        },
+        "genre": {
+            "description": "The book's genre.",
+            "enum": [
+                "Science fiction",
+                "Satire",
+                "Drama",
+                "Action and Adventure",
+                "Romance",
+                "Mystery",
+                "Horror"
+            ],
+            "examples": [
+                "Mystery"
+            ],
+            "title": "genre",
+            "minItems": 1,
+            "type": "string"
+        },
+        "price": {
             "description": "An explanation about the purpose of this instance.",
             "examples": [
-                {
-                    "type": "book",
-                    "attributes": {
-                        "author": "Sigrais",
-                        "title": "Histoire des rats, pour servir à l'histoire universelle",
-                        "genre": "Mystery",
-                        "price": 10
-                    }
-                }
+                10
             ],
-            "required": [
-                "type",
-                "attributes"
-            ],
-            "title": "The data schema",
-            "type": "object",
-            "properties": {
-                "type": {
-                    "description": "An explanation about the purpose of this instance.",
-                    "examples": [
-                        "book"
-                    ],
-                    "title": "The type schema",
-                    "type": "string"
-                },
-                "attributes": {
-                    "description": "An explanation about the purpose of this instance.",
-                    "examples": [
-                        {
-                            "author": "Sigrais",
-                            "title": "Histoire des rats, pour servir à l'histoire universelle",
-                            "genre": "Mystery",
-                            "price": 10
-                        }
-                    ],
-                    "required": [
-                        "author",
-                        "title",
-                        "genre",
-                        "price"
-                    ],
-                    "title": "The attributes schema",
-                    "type": "object",
-                    "properties": {
-                        "author": {
-                            "description": "The book's author",
-                            "examples": [
-                                "Sigrais"
-                            ],
-                            "maxLength": 1024,
-                            "minLength": 1,
-                            "title": "The author schema",
-                            "type": "string"
-                        },
-                        "title": {
-                            "description": "Book's title",
-                            "examples": [
-                                "Histoire des rats, pour servir à l'histoire universelle"
-                            ],
-                            "maxLength": 1024,
-                            "minLength": 1,
-                            "title": "The title schema",
-                            "type": "string"
-                        },
-                        "genre": {
-                            "description": "The book's genre.",
-                            "enum": [
-                                "Science fiction",
-                                "Satire",
-                                "Drama",
-                                "Action and adventure",
-                                "Romance",
-                                "Mystery",
-                                "Horror"
-                            ],
-                            "examples": [
-                                "Mystery"
-                            ],
-                            "title": "The genre schema",
-                            "type": "string"
-                        },
-                        "price": {
-                            "description": "The book's price.",
-                            "examples": [
-                                10.0
-                            ],
-                            "minimum": 0,
-                            "title": "The price schema",
-                            "type": "integer"
-                        }
-                    },
-                    "additionalProperties": true
-                }
-            },
-            "additionalProperties": true
+            "minItems": 1,
+            "minimum": 0,
+            "title": "The price schema",
+            "type": "integer"
         }
     },
     "additionalProperties": true
