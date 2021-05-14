@@ -12,9 +12,9 @@ let tableName = "books"
 let tableCreationQuery = `
     CREATE TABLE ${tableName} (
         id INTEGER NOT NULL PRIMARY KEY,
-        author TEXT NOT NULL,
-        title TEXT NOT NULL,
-        genre TEXT NOT NULL,
+        author VARCHAR(25) NOT NULL,
+        title VARCHAR(40) NOT NULL,
+        genre VARCHAR(20) NOT NULL,
         price FLOAT NOT NULL
     );`
 db.run(tableCreationQuery, (err) => {
