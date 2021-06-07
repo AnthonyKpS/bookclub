@@ -11,9 +11,15 @@ Bookclub is a simple and small web app for managing book entries. It consists of
 ##### 🏃‍♂️ Traverse to /bookclub-api and hit:
 
 ```bash
+npm install
+```
+
+and then
+
+```bash
 npm start
 ```
-Look out for some instructional messages in your console
+Look out for instructional messages in your console
 
 #### For the Bookclubs's UI
 
